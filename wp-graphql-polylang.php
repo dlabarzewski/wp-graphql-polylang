@@ -1,10 +1,10 @@
 <?php
 /**
  * Plugin Name: WP GraphQL Polylang
- * Plugin URI: https://github.com/valu-digital/wp-graphql-polylang
+ * Plugin URI: https://github.com/dlabarzewski/wp-graphql-polylang
  * Description: Exposes Polylang languages and translations in the GraphQL schema
  * Author: Esa-Matti Suuronen, Valu Digital Oy
- * Version: 0.7.0
+ * Version: 0.7.1
  * Author URI: https://valu.fi/
  *
  * @package wp-graphql-polylang

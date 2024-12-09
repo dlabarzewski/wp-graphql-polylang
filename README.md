@@ -131,6 +131,25 @@ In addition to WPGraphQL and Polylang plugins you'll need these plugins too
 You can install the free plugins using Composer. You'll need to have the
 [WordPress Packagist][] repository enabled.
 
+If you don't see the option to filter by language, you can use the following hack by adding the code to functions.php
+
+```
+use WPGraphQL\Utils\Utils;
+
+/**
+ * Makes sure that an explicit graphql_field_name name is set for each ACF
+ * options page, because wp-graphql-polylang won’t add language support to it
+ * otherwise.
+ */
+add_filter("acf/validate_options_page", function ($page) {
+  if (!empty($page["show_in_graphql"]) && empty($page["graphql_field_name"])) {
+    $type_name = Utils::format_type_name($page["menu_slug"]);
+    $page["graphql_field_name"] = Utils::format_field_name($type_name);
+  }
+  return $page;
+});
+```
+
 ```
 composer require wp-graphql/wp-graphql-acf wpackagist-plugin/acf-options-for-polylang
 ```
